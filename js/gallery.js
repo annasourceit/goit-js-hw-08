@@ -79,7 +79,7 @@ const markup = images.map((image) =>
     </li>`).join('');
 
 list.insertAdjacentHTML('beforeend', markup);
-let instance;
+let instance = null;
 list.addEventListener('click', (e) => {
     
     if (e.target.classList.contains('gallery-image')) {
@@ -93,7 +93,10 @@ list.addEventListener('click', (e) => {
 }); 
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === "Escape") {
-        instance.close();
+    const modal = document.querySelector('.basicLightbox');
+    if (modal) {
+        if (e.key === 'Escape') {
+            instance.close();
+        }    
     }
 })
